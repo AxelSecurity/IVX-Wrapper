@@ -1,4 +1,4 @@
-[![IVX Logo](images/ivx-logo-light.svg)]
+![IVX Logo](images/ivx-logo-light.svg)
 # IVX Intelligence Wrapper (Azure OpenAI - Python)
 
 ## Overview
