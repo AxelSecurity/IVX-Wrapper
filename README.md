@@ -77,32 +77,7 @@ docker run -p 3030:3030 --env-file .env ivx-wrapper-py
 
 The wrapper implements three distinct classification pipelines:
 
-```
-┌─────────────────┐
-│   IVX Request   │
-└────────┬────────┘
-         │
-    ┌────▼────┐
-    │ Endpoint │
-    └─┬──┬─┬──┘
-      │  │ │
-      │  │ └──────────────────────┐
-      │  │                        │
-      ▼  ▼                        ▼
-   /url /hash              /misp?url/hash
-     │    │                       │
-     ▼    ▼                       ▼
-  [Azure] [Rapid7+Azure]    [MISP+Azure]
-     │    │                       │
-     └────┴───────────────────────┘
-           │
-           ▼
-    ┌─────────────────┐
-    │ IVX Response    │
-    │ (malicious/     │
-    │  clean)         │
-    └─────────────────┘
-```
+[![IVX Flow](images/ivx-flow.svg)](images/ivx-flow.svg)
 
 ### Endpoint 1: `/analyze/url` - Direct URL Classification
 
