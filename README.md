@@ -1,6 +1,33 @@
 # IVX Intelligence Wrapper (Azure OpenAI - Python)
 
-REST service to integrate **Trellix IVX Cloud** with **Azure OpenAI** for URL and file hash classification.
+## Overview
+
+A sophisticated REST service that bridges **Trellix IVX Cloud** with **Azure OpenAI** large language models to provide intelligent, context-enriched classification of URLs and file hashes as malicious or benign. This wrapper implements a multi-stage intelligence pipeline that combines threat intelligence from multiple sources with AI-powered classification to deliver accurate, explainable security verdicts.
+
+### Key Capabilities
+
+- **Multi-Source Threat Intelligence**: Integrates Rapid7 Threat Intelligence and MISP for enriched classification context
+- **Azure OpenAI Classification**: Leverages GPT models with zero-temperature deterministic responses for consistent verdicts
+- **Three Classification Pipelines**: 
+  - Direct Azure OpenAI analysis (URL)
+  - Rapid7-enriched analysis (Hashes)
+  - MISP-based intelligence-driven analysis (URL/Hash)
+- **Auto-Detection**: Automatically identifies indicator types (URL, SHA256, SHA1, MD5)
+- **IVX-Compliant**: Returns verdicts in Trellix IVX Cloud-compatible JSON format
+- **Structured Logging**: Complete audit trail with JSON logs for all operations
+- **Fast Rejection**: Returns "clean" immediately for unknown/safe indicators (cost optimization)
+
+### Why This Wrapper?
+
+Traditional malware detection relies on static signatures and known patterns. This wrapper enhances detection capabilities by:
+
+1. **Leveraging AI Context**: Azure OpenAI understands threat landscape, campaigns, malware families, and attacker TTPs
+2. **Multi-Source Correlation**: Cross-references indicators against Rapid7 and MISP to validate findings
+3. **Campaign Attribution**: Identifies specific threat campaigns (e.g., "Grandoreiro banking trojan") in MISP data
+4. **Cost Optimization**: Skips expensive OpenAI calls for already-known clean/malicious indicators
+5. **Audit Trail**: Complete logging for compliance and incident investigation
+
+---
 
 ## Configuration
 
