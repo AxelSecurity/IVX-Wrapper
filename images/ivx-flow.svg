@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 720" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <!-- Drop shadow -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.18"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Arrow marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+
+    <!-- Gradients -->
+    <linearGradient id="gReq" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#1e40af"/>
+    </linearGradient>
+    <linearGradient id="gEndpoint" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+    <linearGradient id="gAzure" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="gRapid7" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+    <linearGradient id="gMisp" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="gResp" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="720" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" font-size="20" font-weight="700" fill="#0f172a">IVX — Indicator Verification Flow</text>
+  <text x="450" y="62" text-anchor="middle" font-size="13" fill="#64748b">Multi-source threat intelligence verdict pipeline</text>
+
+  <!-- 1. IVX Request -->
+  <g filter="url(#shadow)">
+    <rect x="350" y="95" width="200" height="60" rx="10" fill="url(#gReq)"/>
+    <text x="450" y="123" text-anchor="middle" font-size="15" font-weight="600" fill="#ffffff">IVX Request</text>
+    <text x="450" y="142" text-anchor="middle" font-size="11" fill="#cbd5e1">incoming indicator</text>
+  </g>
+
+  <!-- Arrow Request -> Endpoint -->
+  <line x1="450" y1="155" x2="450" y2="195" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- 2. Endpoint Router -->
+  <g filter="url(#shadow)">
+    <rect x="330" y="200" width="240" height="65" rx="10" fill="url(#gEndpoint)"/>
+    <text x="450" y="228" text-anchor="middle" font-size="15" font-weight="600" fill="#ffffff">Endpoint Router</text>
+    <text x="450" y="248" text-anchor="middle" font-size="11" fill="#e9d5ff">dispatches to verification path</text>
+  </g>
+
+  <!-- Path labels (route names) -->
+  <!-- Left: /url -->
+  <line x1="390" y1="265" x2="180" y2="320" stroke="#475569" stroke-width="2"/>
+  <line x1="180" y1="320" x2="180" y2="365" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <g>
+    <rect x="135" y="290" width="90" height="26" rx="13" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="180" y="308" text-anchor="middle" font-size="13" font-weight="600" fill="#1e293b" font-family="ui-monospace, Menlo, Consolas, monospace">/url</text>
+  </g>
+
+  <!-- Center: /hash -->
+  <line x1="450" y1="265" x2="450" y2="365" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <g>
+    <rect x="405" y="290" width="90" height="26" rx="13" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="450" y="308" text-anchor="middle" font-size="13" font-weight="600" fill="#1e293b" font-family="ui-monospace, Menlo, Consolas, monospace">/hash</text>
+  </g>
+
+  <!-- Right: /misp?url|hash -->
+  <line x1="510" y1="265" x2="720" y2="320" stroke="#475569" stroke-width="2"/>
+  <line x1="720" y1="320" x2="720" y2="365" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+  <g>
+    <rect x="640" y="290" width="160" height="26" rx="13" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+    <text x="720" y="308" text-anchor="middle" font-size="13" font-weight="600" fill="#1e293b" font-family="ui-monospace, Menlo, Consolas, monospace">/misp?url|hash</text>
+  </g>
+
+  <!-- 3. Service boxes -->
+  <!-- Azure -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="370" width="200" height="70" rx="10" fill="url(#gAzure)"/>
+    <text x="180" y="398" text-anchor="middle" font-size="15" font-weight="600" fill="#ffffff">Azure</text>
+    <text x="180" y="418" text-anchor="middle" font-size="11" fill="#e0f2fe">Microsoft Threat Intel</text>
+    <text x="180" y="432" text-anchor="middle" font-size="10" fill="#bae6fd">URL reputation</text>
+  </g>
+
+  <!-- Rapid7 + Azure -->
+  <g filter="url(#shadow)">
+    <rect x="350" y="370" width="200" height="70" rx="10" fill="url(#gRapid7)"/>
+    <text x="450" y="398" text-anchor="middle" font-size="15" font-weight="600" fill="#ffffff">Rapid7 + Azure</text>
+    <text x="450" y="418" text-anchor="middle" font-size="11" fill="#fed7aa">Threat Command + MS TI</text>
+    <text x="450" y="432" text-anchor="middle" font-size="10" fill="#fdba74">file hash lookup</text>
+  </g>
+
+  <!-- MISP + Azure -->
+  <g filter="url(#shadow)">
+    <rect x="620" y="370" width="200" height="70" rx="10" fill="url(#gMisp)"/>
+    <text x="720" y="398" text-anchor="middle" font-size="15" font-weight="600" fill="#ffffff">MISP + Azure</text>
+    <text x="720" y="418" text-anchor="middle" font-size="11" fill="#d1fae5">community IoC + MS TI</text>
+    <text x="720" y="432" text-anchor="middle" font-size="10" fill="#a7f3d0">cross-reference</text>
+  </g>
+
+  <!-- Convergence to Response -->
+  <line x1="180" y1="440" x2="180" y2="510" stroke="#475569" stroke-width="2"/>
+  <line x1="450" y1="440" x2="450" y2="510" stroke="#475569" stroke-width="2"/>
+  <line x1="720" y1="440" x2="720" y2="510" stroke="#475569" stroke-width="2"/>
+  <line x1="180" y1="510" x2="720" y2="510" stroke="#475569" stroke-width="2"/>
+  <line x1="450" y1="510" x2="450" y2="555" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Aggregator label -->
+  <g>
+    <rect x="370" y="495" width="160" height="22" rx="11" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="450" y="510" text-anchor="middle" font-size="11" font-weight="600" fill="#475569">verdict aggregation</text>
+  </g>
+
+  <!-- 4. IVX Response -->
+  <g filter="url(#shadow)">
+    <rect x="310" y="560" width="280" height="90" rx="10" fill="url(#gResp)"/>
+    <text x="450" y="590" text-anchor="middle" font-size="15" font-weight="600" fill="#ffffff">IVX Response</text>
+    <line x1="370" y1="600" x2="530" y2="600" stroke="#475569" stroke-width="1"/>
+    <!-- Verdict badges -->
+    <g>
+      <rect x="345" y="612" width="90" height="26" rx="13" fill="#dc2626"/>
+      <text x="390" y="630" text-anchor="middle" font-size="12" font-weight="600" fill="#ffffff">malicious</text>
+    </g>
+    <g>
+      <rect x="465" y="612" width="90" height="26" rx="13" fill="#16a34a"/>
+      <text x="510" y="630" text-anchor="middle" font-size="12" font-weight="600" fill="#ffffff">clean</text>
+    </g>
+  </g>
+
+  <!-- Footer note -->
+  <text x="450" y="690" text-anchor="middle" font-size="10" fill="#94a3b8">IVX • indicator verification gateway</text>
+</svg>
